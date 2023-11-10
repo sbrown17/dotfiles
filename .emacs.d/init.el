@@ -55,3 +55,14 @@
 
 
 ;; running `M-x eval-buffer` in this buffer will evaluate it on the spot
+
+;; EXTRA POTENTIAL PACKAGES TO LOOK INTO:
+;; paredit
+;; flyspell-correct
+;; writeroom-mode
+;; which-key
+;; org-bullets
+;; parinfer-rust-mode <- for lisp programming, apparently
+;; org-rifle
+;; auctex	
+;; orderless
