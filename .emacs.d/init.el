@@ -18,13 +18,27 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages '(catppuccin-theme rust-mode darktooth-theme)))
+ '(package-selected-packages
+   '(use-package magit catppuccin-theme rust-mode darktooth-theme)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+;; update local database then install use-package if it's not installed
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+
+(require 'use-package)
+;; tell use-package to install a package if it's not already installed
+(setq use-package-always-ensure t)
+
+;; install magit and bing `C-x g` to activate magit
+(use-package magit
+  :bind (("C-x g" . magit)))
 
 ;; for this theme, at least currently, i think you need to go to
 ;; M-x list-packages and choose to install catppuccin-theme
