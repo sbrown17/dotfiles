@@ -45,6 +45,14 @@
 (load-theme 'catppuccin :no-confirm)
 (package-refresh-contents)
 
+;; Clojure-mode
+(unless (package-installed-p 'clojure-mode)
+  (package-install 'clojure-mode))
+;; inf-clojure (clojure repl)
+(unless (package-installed-p 'inf-clojure)
+  (package-refresh-contents)
+  (package-install 'inf-clojure))
+
 ;; This is to make all those autosave files go to one folder
 ;;(setq backup-directory-alist
 ;;      `((".*" . ,(expand-file-name
