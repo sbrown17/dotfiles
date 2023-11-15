@@ -44,6 +44,9 @@
 ;; M-x list-packages and choose to install catppuccin-theme
 (load-theme 'catppuccin :no-confirm)
 (package-refresh-contents)
+;; frame transparency
+(set-frame-parameter nil 'alpha-background 95)
+(add-to-list 'default-frame-alist '(alpha-background . 95))
 
 ;; Clojure-mode
 (unless (package-installed-p 'clojure-mode)
