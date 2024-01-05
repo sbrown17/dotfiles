@@ -60,6 +60,14 @@
   (package-refresh-contents)
   (package-install 'inf-clojure))
 
+;; org roam
+;; may require the latest org mode version which can be had by running:
+;; M-x package-install RET org-roam RET
+(require 'package)
+(add-to-list 'package-archives
+             '("melpa" . "http://melpa.org/packages/") t)
+
+
 ;; This is to make all those autosave files go to one folder
 ;;(setq backup-directory-alist
 ;;      `((".*" . ,(expand-file-name
