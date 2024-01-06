@@ -71,6 +71,10 @@
 ;; this will let text wrap in org-mode
 (add-hook 'org-mode-hook (lambda () (setq truncate-lines nil)))
 
+;; make new line at 80 characters in org-mode
+;; (add-hook 'org-mode-hook '(lambda () (setq fill-column 80)))
+;; (add-hook 'org-mode-hook 'turn-on-auto-fill)
+
 
 ;; This is to make all those autosave files go to one folder
 ;;(setq backup-directory-alist
