@@ -67,6 +67,10 @@
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.org/packages/") t)
 
+;; org-mode truncation disabled
+;; this will let text wrap in org-mode
+(add-hook 'org-mode-hook (lambda () (setq truncate-lines nil)))
+
 
 ;; This is to make all those autosave files go to one folder
 ;;(setq backup-directory-alist
