@@ -18,8 +18,10 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   '("18cf5d20a45ea1dff2e2ffd6fbcd15082f9aa9705011a3929e77129a971d1cb3" default))
  '(package-selected-packages
-   '(use-package magit catppuccin-theme rust-mode darktooth-theme)))
+   '(zenburn-theme use-package magit catppuccin-theme rust-mode darktooth-theme)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -47,6 +49,9 @@
 ;; frame transparency
 (set-frame-parameter nil 'alpha-background 95)
 (add-to-list 'default-frame-alist '(alpha-background . 95))
+
+;; javascript spacing correction (make tab give 2 spaces)
+(setq js-indent-level 2)
 
 ;; Common Lisp - slime editor
 (load (expand-file-name "~/.quicklisp/slime-helper.el"))
