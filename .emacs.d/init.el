@@ -53,9 +53,14 @@
 ;; javascript spacing correction (make tab give 2 spaces)
 (setq js-indent-level 2)
 
-;; Common Lisp - slime editor
+;; Slime (Common Lisp)
 (load (expand-file-name "~/.quicklisp/slime-helper.el"))
 (setq inferior-lisp-program "sbcl")
+;; different way, may be better. not sure yet...
+;;(unless (package-installed-p 'slime)
+;;  (package-install 'slime))
+;;(setq inferior-lisp-program "sbcl")
+
 
 ;; Clojure-mode
 (unless (package-installed-p 'clojure-mode)
