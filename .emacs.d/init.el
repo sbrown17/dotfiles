@@ -82,3 +82,6 @@
 (setq org-capture-templates
   '(("z" "Zettelkasten Entry" entry (file create-zettelkasten-entry)
     "* %?\nEntered on %U\n  %i\n  %a")))
+
+;; set dictionary server to dict.org where the Webster 1913 dicitonary is held, among others...
+(setq dictionary-server "dict.org")
