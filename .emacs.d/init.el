@@ -1,4 +1,3 @@
-;; GET EVIL
 ;; Set up package.el to work with MELPA
 (require 'package)
 (add-to-list 'package-archives
@@ -6,13 +5,6 @@
 (package-initialize)
 (package-refresh-contents)
 
-;; Download Evil
-(unless (package-installed-p 'evil)
-  (package-install 'evil))
-
-;; Enable Evil
-(require 'evil)
-(evil-mode 1)
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -46,9 +38,6 @@
 ;; M-x list-packages and choose to install catppuccin-theme
 (load-theme 'catppuccin :no-confirm)
 (package-refresh-contents)
-;; frame transparency
-(set-frame-parameter nil 'alpha-background 95)
-(add-to-list 'default-frame-alist '(alpha-background . 95))
 
 ;; javascript spacing correction (make tab give 2 spaces)
 (setq js-indent-level 2)
@@ -67,13 +56,6 @@
   (package-refresh-contents)
   (package-install 'inf-clojure))
 
-;; org roam
-;; may require the latest org mode version which can be had by running:
-;; M-x package-install RET org-roam RET
-(require 'package)
-(add-to-list 'package-archives
-             '("melpa" . "http://melpa.org/packages/") t)
-
 ;; org-mode truncation disabled
 ;; this will let text wrap in org-mode
 (add-hook 'org-mode-hook (lambda () (setq truncate-lines nil)))
@@ -82,25 +64,4 @@
 ;; (add-hook 'org-mode-hook '(lambda () (setq fill-column 80)))
 ;; (add-hook 'org-mode-hook 'turn-on-auto-fill)
 
-
-;; This is to make all those autosave files go to one folder
-;;(setq backup-directory-alist
-;;      `((".*" . ,(expand-file-name
-;;             (concat user-emacs-directory "backups"))))
-;;(setq auto-save-file-name-transforms
-;;      `((".*" ,(expand-file-name
-;;             (concat user-emacs-directory "backups") t)))
-
-
 ;; running `M-x eval-buffer` in this buffer will evaluate it on the spot
-
-;; EXTRA POTENTIAL PACKAGES TO LOOK INTO:
-;; paredit
-;; flyspell-correct
-;; writeroom-mode
-;; which-key
-;; org-bullets
-;; parinfer-rust-mode <- for lisp programming, apparently
-;; org-rifle
-;; auctex	
-;; orderless
