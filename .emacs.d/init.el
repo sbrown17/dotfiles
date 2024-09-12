@@ -65,3 +65,20 @@
 ;; (add-hook 'org-mode-hook 'turn-on-auto-fill)
 
 ;; running `M-x eval-buffer` in this buffer will evaluate it on the spot
+
+;; experimenting with a capture template for Org-mode
+;; things to add:
+  ;; Tags
+  ;; A map of contents based off tags
+  ;; links?
+(defun create-zettelkasten-entry ()
+  "Create a dated filename for zettelkasten identification purposes."
+  (let ((name (read-string "Enter the file name: ")))
+    (expand-file-name (format "%s_%s.org"
+      (format-time-string "%Y%m%d%H%M%S")
+      name)
+    "~/zettelkasten/")))
+
+(setq org-capture-templates
+  '(("z" "Zettelkasten Entry" entry (file create-zettelkasten-entry)
+    "* %?\nEntered on %U\n  %i\n  %a")))
