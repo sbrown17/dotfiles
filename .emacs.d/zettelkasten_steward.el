@@ -15,6 +15,15 @@
     (directory-files directory nil "^[^0-9].*\.org$" t))
 
 ;; create-new-name -> get current datetime if current_datetime exists, decrement and check again else append datetime to the old name with an underscore
+;; get datetimes at beginning of each file that has one
+;; (directory-files "~/Development/notes/" nil "^[0-9]\\{14\\}_.*\\.org" t)
+(defun get-14-digit-prefixes-as-numbers (directory)
+  "Get a list of 14-digit prefixes as numbers from filenames in DIRECTORY."
+  (let* ((files (directory-files directory nil "^[0-9]\\{14\\}_.*\\.org" t))
+         (digits-list '()))
+    (dolist (file files digits-list)
+      (when (string-match "^\\([0-9]\\{14\\}\\)" file)
+        (push (string-to-number (match-string 1 file)) digits-list)))))
 
 (defun rename-file-safe (old-name new-name)
   "Rename file old-name to new-name safely."
