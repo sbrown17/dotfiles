@@ -10,7 +10,7 @@
       name)
     "~/Development/notes/")))
 
-(defun get-directory-filenames (directory)
+(defun get-undated-filenames (directory)
   "Return a list of filenames in the given Directory."
     (directory-files directory nil "^[^0-9].*\.org$" t))
 
