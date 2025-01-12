@@ -48,6 +48,10 @@
   (setq inferior-lisp-program "sbcl")
   (add-to-list 'slime-contribs 'slime-repl))
 
+;; Elm-mode
+(unless (package-installed-p 'elm-mode)
+  (package-install 'elm-mode))
+
 ;; Clojure-mode
 (unless (package-installed-p 'clojure-mode)
   (package-install 'clojure-mode))
