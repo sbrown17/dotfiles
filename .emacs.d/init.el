@@ -2,6 +2,15 @@
 (global-display-line-numbers-mode)
 (set-face-attribute 'default nil :height 140)
 
+;; ERC
+(setq erc-server "irc.libera.chat"
+      erc-nick "Nickname" ;; CHANGE ME
+      erc-user-full-name "Full Name" ;; CHANGE ME
+      erc-track-shorten-start 8
+      erc-autojoin-channels-alist '(("irc-libera.chat" "##programming"))
+      erc-kill-buffer-on-part t
+      erc-auto-query 'bury)
+
 ;; Set up package.el to work with MELPA
 (require 'package)
 (add-to-list 'package-archives
