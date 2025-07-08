@@ -2,6 +2,9 @@
 (global-display-line-numbers-mode)
 (set-face-attribute 'default nil :height 140)
 
+(setq auto-save-file-name-transforms
+          `((".*" ,(concat user-emacs-directory "auto-save/") t)))
+
 ;; ERC
 (setq erc-server "irc.libera.chat"
       erc-nick "Nickname" ;; CHANGE ME
