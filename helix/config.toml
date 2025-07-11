@@ -1,9 +1,14 @@
 theme = "everforest_dark"
 
 [editor]
+#true-color = true #this is for wsl
 line-number = "relative"
 
 [editor.cursor-shape]
 insert = "bar"
 normal = "block"
 select = "block"
+
+[editor.file-picker]
+# show hidden files
+hidden = false
