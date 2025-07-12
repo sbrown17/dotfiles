@@ -1,7 +1,8 @@
 theme = "everforest_dark"
 
 [editor]
-#true-color = true #this is for wsl
+#true-color is for helix in wsl
+#true-color = true 
 line-number = "relative"
 
 [editor.cursor-shape]
@@ -12,3 +13,7 @@ select = "block"
 [editor.file-picker]
 # show hidden files
 hidden = false
+
+[keys.normal]
+#allows esc to cancel highlighted text
+esc = ["collapse_selection", "keep_primary_selection"]
