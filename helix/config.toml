@@ -1,8 +1,8 @@
 theme = "everforest_dark"
 
 [editor]
-#true-color is for helix in wsl
-#true-color = true 
+#true-color is needed for both wsl and tmux to display proper theme colors
+true-color = true 
 line-number = "relative"
 
 [editor.cursor-shape]
