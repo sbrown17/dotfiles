@@ -15,5 +15,10 @@ select = "block"
 hidden = false
 
 [keys.normal]
-#allows esc to cancel highlighted text
+# allows esc to cancel highlighted text
 esc = ["collapse_selection", "keep_primary_selection"]
+
+# This is to open lazygit or other git cli apps in a new buffer inside helix for the project you're currently in
+# need to remap zellij's C-g to C-l for this to work well
+# [keys.normal]
+# C-g = [":new", ":insert-output lazygit", ":bugger-close!", ":redraw"]
