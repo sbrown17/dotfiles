@@ -1,9 +1,6 @@
 ;; general setup
 (global-display-line-numbers-mode)
-(set-face-attribute 'default nil :height 140)
-
-(setq auto-save-file-name-transforms
-          `((".*" ,(concat user-emacs-directory "auto-save/") t)))
+(set-face-attribute 'default nil :height 130)
 
 ;; ERC
 (setq erc-server "irc.libera.chat"
@@ -19,7 +16,10 @@
 (add-to-list 'package-archives
              '("melpa" . "https://melpa.org/packages/"))
 (package-initialize)
-(package-refresh-contents)
+
+;; Only refresh once at startup if needed
+(unless package-archive-contents
+  (package-refresh-contents))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -29,7 +29,7 @@
  '(custom-safe-themes
    '("18cf5d20a45ea1dff2e2ffd6fbcd15082f9aa9705011a3929e77129a971d1cb3" default))
  '(package-selected-packages
-   '(zenburn-theme use-package magit catppuccin-theme rust-mode darktooth-theme)))
+   '(vterm roc-ts-mode elm-mode slime zenburn-theme use-package magit catppuccin-theme rust-mode darktooth-theme)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -53,7 +53,12 @@
 ;; for this theme, at least currently, i think you need to go to
 ;; M-x list-packages and choose to install catppuccin-theme
 (load-theme 'catppuccin :no-confirm)
-(package-refresh-contents)
+
+;; Use spaces always for indentation
+(setq-default indent-tabs-mode nil)
+
+;; Set default indentation width to 4 spaces
+(setq-default tab-width 4)
 
 ;; javascript spacing correction (make tab give 2 spaces)
 (setq js-indent-level 2)
@@ -75,6 +80,29 @@
 (unless (package-installed-p 'inf-clojure)
   (package-refresh-contents)
   (package-install 'inf-clojure))
+
+;; Roc-mode with tree-sitter
+;; (use-package roc-ts-mode
+;;   :mode "\\.roc\\'"
+;;   :config
+;;   ;; Install tree-sitter grammar if not present
+;;   (unless (treesit-language-available-p 'roc)
+;;     (add-to-list 'treesit-language-source-alist
+;;                  '(roc "https://github.com/faldor20/tree-sitter-roc" "v0.20" "src"))
+;;     (message "Run M-x treesit-install-language-grammar and select 'roc' to install the grammar")))
+ (use-package roc-ts-mode
+   :mode ("\\.roc\\'" . roc-ts-mode)
+   :config
+   ;; any configuration goes here (e.g., see below for language server integration)...
+   )
+;; (with-eval-after-load 'roc-ts-mode
+;;   (require 'eglot)
+;;   (add-to-list 'eglot-server-programs '(roc-ts-mode "roc_language_server"))
+;;   (add-hook 'roc-ts-mode-hook #'eglot-ensure))
+
+;; vterm from melpa
+(use-package vterm
+    :ensure t)
 
 ;; org-mode truncation disabled
 ;; this will let text wrap in org-mode
