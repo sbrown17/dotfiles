@@ -81,24 +81,16 @@
   (package-refresh-contents)
   (package-install 'inf-clojure))
 
-;; Roc-mode with tree-sitter
-;; (use-package roc-ts-mode
-;;   :mode "\\.roc\\'"
-;;   :config
-;;   ;; Install tree-sitter grammar if not present
-;;   (unless (treesit-language-available-p 'roc)
-;;     (add-to-list 'treesit-language-source-alist
-;;                  '(roc "https://github.com/faldor20/tree-sitter-roc" "v0.20" "src"))
-;;     (message "Run M-x treesit-install-language-grammar and select 'roc' to install the grammar")))
- (use-package roc-ts-mode
-   :mode ("\\.roc\\'" . roc-ts-mode)
-   :config
-   ;; any configuration goes here (e.g., see below for language server integration)...
-   )
-;; (with-eval-after-load 'roc-ts-mode
-;;   (require 'eglot)
-;;   (add-to-list 'eglot-server-programs '(roc-ts-mode "roc_language_server"))
-;;   (add-hook 'roc-ts-mode-hook #'eglot-ensure))
+;; Configure tree-sitter language sources
+(setq treesit-language-source-alist
+      '((roc "https://github.com/faldor20/tree-sitter-roc" "master" "src")))
+(use-package roc-ts-mode
+  :mode ("\\.roc\\'" . roc-ts-mode)
+  :config
+  ;; Auto-install grammar if missing
+  (unless (treesit-language-available-p 'roc)
+    (when (yes-or-no-p "Roc tree-sitter grammar not found. Install it now? ")
+      (treesit-install-language-grammar 'roc))))
 
 ;; vterm from melpa
 (use-package vterm
