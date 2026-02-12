@@ -96,6 +96,9 @@
 (use-package vterm
     :ensure t)
 
+(use-package geiser-guile
+    :ensure t)
+
 ;; org-mode truncation disabled
 ;; this will let text wrap in org-mode
 (add-hook 'org-mode-hook (lambda () (setq truncate-lines nil)))
